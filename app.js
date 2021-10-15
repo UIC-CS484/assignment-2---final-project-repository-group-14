@@ -4,11 +4,22 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+app.use(passport.initalized());
+app.use(passport.session());
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 var app = express();
 
+var session_config = {
+  secret: 'secret', //a random unique string key used to authenticate a session
+  resave: true, //nables the session to be stored back to the session store, even if the session was never modified during the request
+  saveUninitialized: true, //his allows any uninitialized session to be sent to the store. When a session is created but not modified, it is referred to as uninitialized.
+  cookie: { secure: true } //true is a recommended option. However, it requires an https-enabled website
+  //store  parameter when saving session to database
+};
+
+app.use(session(session_config))
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
