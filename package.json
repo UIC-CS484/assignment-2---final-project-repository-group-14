@@ -1,24 +1,31 @@
 {
-  "name": "newnode",
-  "version": "0.0.0",
-  "private": true,
+  "name": "assignment-2---final-project-repository-group-14",
+  "version": "1.0.0",
+  "description": "```\r $ npm install\r $ npm start\r ```",
+  "main": "index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js"
   },
-  "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.1",
-    "hbs": "^4.1.2",
-    "http-errors": "~1.6.3",
-    "jade": "~1.11.0",
-    "morgan": "~1.9.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UIC-CS484/assignment-2---final-project-repository-group-14.git"
   },
-  "main": "app.js",
   "author": "",
   "license": "ISC",
-  "description": "",
-  "devDependencies": {
-  "nodemon": "^2.0.13"
+  "bugs": {
+    "url": "https://github.com/UIC-CS484/assignment-2---final-project-repository-group-14/issues"
+  },
+  "homepage": "https://github.com/UIC-CS484/assignment-2---final-project-repository-group-14#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "debug": "^4.3.2",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "hbs": "^4.1.2",
+    "nodemon": "^2.0.13",
+    "passport": "^0.5.0",
+    "passport-local": "^1.0.0"
   }
 }
