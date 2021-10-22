@@ -1,52 +1,50 @@
-var createError = require('http-errors');
-var express = require('express');
+const express = require('express')
+const app = express()
+var sqlite3 = require('sqlite3').verbose();
 var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
+var bcrypt = require('bcrypt')
 
-app.use(passport.initalized());
-app.use(passport.session());
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+const loginRouter = require('./routes/login');
+const createAccountRouter = require('./routes/create_account');
+const passport = require('passport');
+const database = require('./database/testdb.js');
+const databasefile = require('./database/testdb');
+const { InsufficientStorage } = require('http-errors');
 
-var app = express();
 
-var session_config = {
-  secret: 'secret', //a random unique string key used to authenticate a session
-  resave: true, //nables the session to be stored back to the session store, even if the session was never modified during the request
-  saveUninitialized: true, //his allows any uninitialized session to be sent to the store. When a session is created but not modified, it is referred to as uninitialized.
-  cookie: { secure: true } //true is a recommended option. However, it requires an https-enabled website
-  //store  parameter when saving session to database
-};
+// Used to parse our forms 
+// placed before our middle ware 
 
-app.use(session(session_config))
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
-app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+//setup our middle
+app.use(express.static('public'));
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+app.use('/',loginRouter);
+app.use('/create_account',createAccountRouter);
+
+
+
+//port
+app.listen(5000)
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
-});
+    next(createError(404));
+  });
+  
+  // error handler
+  app.use(function(err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+  
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
+  });
+  
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
-
-module.exports = app;
+module.exports = app
