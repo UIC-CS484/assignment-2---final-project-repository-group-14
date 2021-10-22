@@ -37,23 +37,25 @@
 </head>
 <body>
 
-<form action= "/" method="POST">
+<form action= "" method="POST">
 
     <div class="container">
         <label><b>First Name</b></label>
-        <input type="text" placeholder="Enter First Name" name="fname" required>
-
+        <input type="text" placeholder="Enter First Name" name="fname" >
+        <label><b>Last Name</b></label>
+        <input type="text" placeholder="Enter Last Name" name="lname" >
+        <label><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" >
         <label><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
-        <form action="../routes/create_account.js">
-            <button type="submit" id = "CreateAccount">Login</button>
-        </form>
+        <input type="password" placeholder="Enter password" name="password" >
+       
+        <button type="submit" id = "CreateAccount">Login</button>
      
 
     </div>
 
     <footer>
-        <p>Don't have an account? <a href="/create_account">Create Account</a></p>
+        <p>Have an account? <a href="/">Create Account</a></p>
     </footer>
 </form>
 
