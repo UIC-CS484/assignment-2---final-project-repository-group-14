@@ -26,8 +26,18 @@ We will create a branch for every major change we do. Such as when we are creati
 ```
 $ npm start
 ```
+Go to http://localhost:5000/
 
 # Testing
+```
+$ npm test
+```
+# Test Implemented
+1. Test that checks to see if all requiered fields for database table were inputted.
+2. Test to check if the password is a "strong password" meaning there is at least one number, upper case and lower case letter.
 
+# Planned Test
+- Test routing, if a user tries to log in without an account. It should return the user to the create account page
+- Check to see if there are any duplicate accounts in the database
 
 https://uic-cs484.github.io/assignment-1---team-project-proposal-group-14/
