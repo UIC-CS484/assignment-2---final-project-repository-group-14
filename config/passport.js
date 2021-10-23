@@ -14,25 +14,36 @@ module.exports = function(passport) {
         // if email is not found
         if(user == undefined){
             
-            return done(null,false,{message:'Email does not exist'})
+           done(null,false,{message:'Email does not exist'})
             
         }else{
             //console.log("User Exists Check for password")
             try{
                 if(await bcrypt.compare(password,user.password)){
                     console.log('Correct Password')
-                    return done(null,user)
+                    done(null,user)
                 }else{
-                    return done(null,false,console.log("Incorrect Password"))
+                    done(null,false,console.log("Incorrect Password"))
                 }
             }catch(e){
-                return done(e)
+                done(e)
             }
 
         }
         
     }))
   
+    passport.serializeUser((user,done)=>{
+        done(null,user)
+    })
+
+    passport.deserializeUser(function (id,done){
+   
+        let user = database.getId(id)
+      
+        done(null,user)
+        
+    })
     
 
 }

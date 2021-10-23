@@ -12,8 +12,9 @@ router.get('/', function(req, res, next) {
 
 router.post('/',async function(req,res,next){
   passport.authenticate('local',{
-    successRedirect: '/dashboard',
-    failureRedirect: '/'
+    successRedirect: './dashboard',
+    failureRedirect: '/',
   })(req,res,next);
 })
+
 module.exports = router;

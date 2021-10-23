@@ -3,27 +3,27 @@ const db = new sqlite3.Database('./database/test.db');
 const bcrypt = require('bcrypt')
 
 // db.serialize(function() {
-//   //db.run("CREATE TABLE user (id INTEGER PRIMARY KEY autoincrement, first_name TEXT,last_name TEXT,email TEXT,password TEXT)");
+//   db.run("CREATE TABLE user (id INTEGER PRIMARY KEY autoincrement, first_name TEXT,last_name TEXT,email TEXT,password TEXT)");
 
-//   // var stmt = db.prepare("INSERT INTO user VALUES (?,?,?,?,?)");
-//   // stmt.run(null,'ryan','rattanasamay','ratt@gmail.com','123')
+// //   // var stmt = db.prepare("INSERT INTO user VALUES (?,?,?,?,?)");
+// //   // stmt.run(null,'ryan','rattanasamay','ratt@gmail.com','123')
   
   
-//   // stmt.finalize()
-var cool = db.each("SELECT * FROM user", function(err, row) {
-      something = row;
-  });
-// // var email = 'ratt@gmail.com'
-// //   db.get("SELECT * FROM user where email=?",[email],function(err,row){
-// //     if(err){
-// //       console.log('email does not exist')
-// //       return false
-// //     }
-// //     else{
-// //       console.log('email does exist')
-// //       return true
-// //     }
-// //   });
+// //   // stmt.finalize()
+// var cool = db.each("SELECT * FROM user", function(err, row) {
+//       something = row;
+//   });
+// // // var email = 'ratt@gmail.com'
+// // //   db.get("SELECT * FROM user where email=?",[email],function(err,row){
+// // //     if(err){
+// // //       console.log('email does not exist')
+// // //       return false
+// // //     }
+// // //     else{
+// // //       console.log('email does exist')
+// // //       return true
+// // //     }
+// // //   });
 // });
 
 async function getEmail(email){
@@ -52,9 +52,23 @@ async function insertUser(user){
     error
   }
 }
+
+async function getId(id){
+  var db = new sqlite3.Database('./database/test.db');
+  
+ 
+  return await new Promise((resolve,reject)=>{
+    db.get("SELECT * FROM user where id =?",$id, (err, row) => {
+      if(err){
+        reject(err)
+      }
+      resolve(row)
+    })
+  })
+}
   
     
   
 
 
-module.exports = {getEmail,insertUser}
+module.exports = {getEmail,insertUser,getId}

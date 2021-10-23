@@ -30,6 +30,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
+//Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
 //setup our middleware
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -37,9 +41,7 @@ app.use('/',loginRouter);
 app.use('/create_account',createAccountRouter);
 app.use('/dashboard',dashboard)
 
-//Passport middleware
-app.use(passport.initialize());
-app.use(passport.session());
+
 
 //port
 app.listen(5000)
