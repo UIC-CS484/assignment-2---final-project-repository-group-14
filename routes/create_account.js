@@ -14,11 +14,11 @@ router.get('/',function(req,res,next){
 
 router.post('/',async function(req,res,next){
 
-  // var password = req.body.password
+  var password = req.body.password
 
   if (!validate.validatePassword(password)) {
     console.log("not a good password, try again")
-    return;
+    return res.redirect('./');
   }
   
   let v = await database.getEmail(req.body.email)
