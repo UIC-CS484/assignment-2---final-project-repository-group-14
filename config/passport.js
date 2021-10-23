@@ -12,8 +12,8 @@ module.exports = function(passport) {
         //console.log(user)
         // if email is not found
         if(user == undefined){
-            
-           done(null,false,{message:'Email does not exist'})
+ 
+           done(null,false,{error:'Email does not exist'})
             
         }
 	
@@ -25,7 +25,7 @@ module.exports = function(passport) {
                     return done(null,user)
                 }
 		else{
-                    return done(null,false)
+                    return done(null,false,{error:'Password incorrect'})
                 }
             }catch(e){
                 done(e)

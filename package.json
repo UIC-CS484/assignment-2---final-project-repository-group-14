@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "nodemon ./app.js",
-    "test" : "jest"
+    "test": "jest"
   },
   "dependencies": {
     "bcrypt": "^5.0.1",
@@ -12,6 +12,7 @@
     "cookie-parser": "^1.4.5",
     "debug": "~2.6.9",
     "express": "^4.17.1",
+    "express-flash": "0.0.2",
     "express-session": "^1.17.2",
     "hbs": "^4.1.2",
     "http-errors": "~1.6.3",

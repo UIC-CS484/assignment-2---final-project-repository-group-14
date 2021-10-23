@@ -6,6 +6,7 @@ const createAccountRouter = require('./routes/create_account');
 const passport = require('passport');
 const session = require('express-session')
 const dashboard = require('./routes/dashboard')
+const flash = require('express-flash')
 
 
 
@@ -25,7 +26,7 @@ session_config.cookie.secure = false;
 
 //Express Sessions
 app.use(session(session_config))
-
+app.use(flash());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static('public'));

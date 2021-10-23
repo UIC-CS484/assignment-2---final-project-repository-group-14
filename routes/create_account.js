@@ -8,6 +8,7 @@ const validate = require('../config/validate')
 
 
 
+
 router.get('/',function(req,res,next){
     res.render("../views/create_account.hbs")
 })
@@ -17,8 +18,8 @@ router.post('/',async function(req,res,next){
   var password = req.body.password
 
   if (!validate.validatePassword(password)) {
-    console.log("not a good password, try again")
-    return res.redirect('./');
+    //console.log("not a good password, try again")
+    return res.render('./create_account',{error:'Not strong enough password. Provide a lowercase,uppercase, and number!'});
   }
   
   let v = await database.getEmail(req.body.email)
@@ -27,7 +28,7 @@ router.post('/',async function(req,res,next){
     res.redirect('./')
   }
   else{
-    console.log("I exist")
+    return res.render('./create_account',{error:'Email Exists'});
 
   }
   
