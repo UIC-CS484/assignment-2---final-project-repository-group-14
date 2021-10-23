@@ -7,9 +7,9 @@ module.exports = function(passport) {
         usernameField: 'email',
         passwordField: 'password'
     },async function(username,password,done){
-        console.log("Hello")
+        //console.log("Hello")
         let user = await database.getEmail(username)
-        console.log(user)
+        //console.log(user)
         // if email is not found
         if(user == undefined){
             
@@ -21,11 +21,11 @@ module.exports = function(passport) {
             //console.log("User Exists, Please Check for password")
             try{
                 if(await bcrypt.compare(password,user.password)){
-                    console.log('Correct Password')
+                    //console.log('Correct Password')
                     return done(null,user)
                 }
 		else{
-                    return done(null,false,console.log("Incorrect Password"))
+                    return done(null,false)
                 }
             }catch(e){
                 done(e)
@@ -39,11 +39,8 @@ module.exports = function(passport) {
         done(null,user)
     })
 
-    passport.deserializeUser(function (id,done){
-   
-        let user = database.getId(id)
-      
-        done(null,user)
+    passport.deserializeUser(function (user,done){
+        done(null,user)// you can access with req.user
         
     })
     

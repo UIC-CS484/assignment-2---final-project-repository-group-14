@@ -3,7 +3,9 @@ var router = express.Router();
 
 
 router.get('/',function(req,res,next){
-    res.render('../views/dashboard')
+    let user = req.user;
+    console.log(user)
+    res.render('../views/dashboard',{user})
 })
 
 module.exports = router
