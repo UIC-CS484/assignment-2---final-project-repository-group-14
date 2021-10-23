@@ -16,10 +16,10 @@ router.post('/',async function(req,res,next){
 
   // var password = req.body.password
 
-  // if (!validate.validatePassword(password)) {
-  //   console.log("not a good password, try again")
-  //   return;
-  // }
+  if (!validate.validatePassword(password)) {
+    console.log("not a good password, try again")
+    return;
+  }
   
   let v = await database.getEmail(req.body.email)
   if(v == undefined){
