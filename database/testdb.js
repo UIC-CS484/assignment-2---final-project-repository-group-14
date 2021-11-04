@@ -1,6 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./database/test.db');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcrypt');
+const { resolve } = require('path/posix');
 
 // db.serialize(function() {
 //   db.run("CREATE TABLE user (id INTEGER PRIMARY KEY autoincrement, first_name TEXT,last_name TEXT,email TEXT,password TEXT)");
@@ -66,9 +67,38 @@ async function getId(id){
     })
   })
 }
-  
+
+ async function update(user, id) {
+  var db = new sqlite3.Database('./database/test.db');
+  var firstName = user.fname;
+
+  return await new Promise((resolve, reject)=> {
+    db.run("UPDATE user SET first_name = ? WHERE id = ?", firstName, id, (err) => {
+      if (err) {
+        reject(err)
+      }
+      resolve(console.log("Updated user"))
+    })
+
+  })
+
+}
+
+async function deleteUser(id) {
+  var db = new sqlite3.Database('./database/test.db');
+
+  return await new Promise((resolve, reject)=> {
+    db.run("Delete FROM user WHERE id = ?", id, (err) => {
+      if (err) {
+        reject(err)
+      }
+      resolve(console.log("Deleted user"))
+    })
+
+  })
+}
     
   
 
 
-module.exports = {getEmail,insertUser,getId}
+module.exports = {getEmail,insertUser,getId, update, deleteUser}
