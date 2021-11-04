@@ -9,4 +9,9 @@ router.get('/',function(req,res,next){
     res.render('../views/dashboard',{user})
 })
 
+router.post('/',(req,res,next) =>{
+    console.log(req.body.fname);
+    console.log(req.body.lname)
+
+})
 module.exports = router
