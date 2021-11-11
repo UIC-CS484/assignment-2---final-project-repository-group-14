@@ -18,7 +18,7 @@ router.get('/',function(req,res,next){
         var counter = 0;
         for(i = 0; i < object.length;i++){
             for(j=0; j < object[i].items.length;j++){
-                console.log(object[i].items[j].displayName + " : " + object[i].items[j].position.displayName)
+                //console.log(object[i].items[j].displayName + " : " + object[i].items[j].position.displayName )
                 counter++;
             }
         }
@@ -45,9 +45,17 @@ router.post('/',async function(req,res,next){
     // console.log(req.body.fname);
     // console.log(req.body.lname)
     // console.log(userId)
+    if(req.body.button == 'Edit'){
+        await database.update(req.body, userId);
+        console.log('edit')
+    }
+    if(req.body.button == 'Delete'){
+        await database.deleteUser(userId);
+        console.log('Deleting')
+    }
 
-    await database.update(req.body, userId);
-    //await database.deleteUser(userId);
+
+
     
     res.redirect('./')
 })
