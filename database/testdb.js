@@ -1,7 +1,7 @@
 const sqlite3 = require('sqlite3').verbose();
 const db = new sqlite3.Database('./database/test.db');
 const bcrypt = require('bcrypt');
-const { resolve } = require('path/posix');
+// const { resolve } = require('path/posix');
 
 // db.serialize(function() {
 //   db.run("CREATE TABLE user (id INTEGER PRIMARY KEY autoincrement, first_name TEXT,last_name TEXT,email TEXT,password TEXT)");
