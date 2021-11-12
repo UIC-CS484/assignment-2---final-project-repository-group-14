@@ -42,4 +42,6 @@ $ npm test
 
 ### ER Diagram
 
+![er.png](ERDiag.png)
+
 ###https://uic-cs484.github.io/assignment-1---team-project-proposal-group-14/
