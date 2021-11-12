@@ -44,4 +44,7 @@ $ npm test
 
 ![erdiagram.png](erdiagram.png)
 
+### Charting
+We used chart.js bar chart to plot out the number of players playing a specific position on the NFL Chicago Bears football team.
+
 ###https://uic-cs484.github.io/assignment-1---team-project-proposal-group-14/
