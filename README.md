@@ -47,5 +47,6 @@ The user-id is automatically assigned and incremented for each entry.
 
 ### Charting
 We used chart.js bar chart to plot out the number of players playing a specific position on the NFL Chicago Bears football team.
+The charts intention is to show the user how many position players are on a given team as stat line they can look at as a fan of that specific team.
 
 ###https://uic-cs484.github.io/assignment-1---team-project-proposal-group-14/
