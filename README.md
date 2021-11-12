@@ -41,6 +41,7 @@ $ npm test
 - Check to see if there are any duplicate accounts in the database
 
 ### ER Diagram
+The user-id is automatically assigned and incremented for each entry.
 
 ![erdiagram.png](erdiagram.png)
 
