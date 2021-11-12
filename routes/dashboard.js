@@ -32,7 +32,7 @@ router.get('/',function(req,res,next){
         //console.log(myMap)
         obj = Object.fromEntries(myMap)
         userId = user.id
-        res.render('../views/dashboard',{user,obj})
+        res.render('../views/dashboard',{user, obj})
         
   
     }).catch(function(error){

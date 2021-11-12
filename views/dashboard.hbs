@@ -20,7 +20,7 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	<h1>Welcome back ! {{user.first_name}}  {{user.last_name}} {{obj.Quarterback}}</h1>
+	<h1>Welcome back ! {{user.first_name}}  {{user.last_name}} </h1>
 
 
 	<form action="/dashboard" method="POST">
@@ -43,8 +43,8 @@
 			data: {
 				labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
 				datasets: [{
-					label: '# of Votes',
-					data: [{{obj.Linebacker}},4, 3, 5, 2, 3],
+					label: '# of Players by Position for the Bears',
+					data: [3,4, 3, 5, 2, 3],
 					backgroundColor: [
 						'rgba(255, 99, 132, 0.2)',
 						'rgba(54, 162, 235, 0.2)',
