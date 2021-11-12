@@ -40,4 +40,6 @@ $ npm test
 - Test routing, if a user tries to log in without an account. It should return the user to the create account page
 - Check to see if there are any duplicate accounts in the database
 
+### ER Diagram
+
 ###https://uic-cs484.github.io/assignment-1---team-project-proposal-group-14/
