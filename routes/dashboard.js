@@ -18,20 +18,21 @@ router.get('/',function(req,res,next){
         var players = object[0].items;
         for(i = 0; i < object.length;i++){
             for(j=0; j < object[i].items.length;j++){
-                //console.log(object[i].items[j].displayName + " : " + object[i].items[j].position.displayName )
-                // var position = object[i].items[j].position.displayName;
-                // if (myMap.has(position)) {
-                //     var counter = myMap.get(position);
-                //     counter++;
-                //     myMap.set(position,counter);
-                // } else {
-                //     myMap.set(object[i].items[j].position.displayName, 1);
-                // }
+                console.log(object[i].items[j].displayName + " : " + object[i].items[j].position.displayName )
+                var position = object[i].items[j].position.displayName;
+                if (myMap.has(position)) {
+                    var counter = myMap.get(position);
+                    counter++;
+                    myMap.set(position,counter);
+                } else {
+                    myMap.set(object[i].items[j].position.displayName, 1);
+                }
             }
         }
         //console.log(myMap)
         obj = Object.fromEntries(myMap)
         userId = user.id
+        console.log(obj)
         res.render('../views/dashboard',{user, obj})
         
   
