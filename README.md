@@ -49,4 +49,28 @@ The user-id is automatically assigned and incremented for each entry.
 We used chart.js bar chart to plot out the number of players playing a specific position on the NFL Chicago Bears football team.
 The charts intention is to show the user how many position players are on a given team as stat line they can look at as a fan of that specific team.
 
+### Code Snippets of RESTFul API Connection
+
+```
+    axios.get("https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/3/roster").then(function(response){
+        var object = response.data.athletes;
+        var players = object[0].items;
+        for(i = 0; i < object.length;i++){
+            for(j=0; j < object[i].items.length;j++){
+                var position = object[i].items[j].position.displayName;
+                if (myMap.has(position)) {
+                    var counter = myMap.get(position);
+                    counter++;
+                    myMap.set(position,counter);
+                } else {
+                    myMap.set(object[i].items[j].position.displayName, 1);
+                }
+            }
+        }
+        obj = Object.fromEntries(myMap)
+        userId = user.id
+        console.log(obj)
+        res.render('../views/dashboard',{user, obj})
+
+```
 ###https://uic-cs484.github.io/assignment-1---team-project-proposal-group-14/
