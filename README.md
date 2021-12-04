@@ -55,25 +55,25 @@ The charts intention is to show the user how many position players are on a give
 ### Code Snippet of RESTFul API Connection
 
 ```javascript
-    axios.get("https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/3/roster").then(function(response){
-        var object = response.data.athletes;
-        var players = object[0].items;
-        for(i = 0; i < object.length;i++){
-            for(j=0; j < object[i].items.length;j++){
-                var position = object[i].items[j].position.displayName;
-                if (myMap.has(position)) {
-                    var counter = myMap.get(position);
-                    counter++;
-                    myMap.set(position,counter);
-                } else {
-                    myMap.set(object[i].items[j].position.displayName, 1);
-                }
+axios.get("https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/3/roster").then(function(response){
+    var object = response.data.athletes;
+    var players = object[0].items;
+    for(i = 0; i < object.length;i++){
+        for(j=0; j < object[i].items.length;j++){
+            var position = object[i].items[j].position.displayName;
+            if (myMap.has(position)) {
+                var counter = myMap.get(position);
+                counter++;
+                myMap.set(position,counter);
+            } else {
+                myMap.set(object[i].items[j].position.displayName, 1);
             }
         }
-        obj = Object.fromEntries(myMap)
-        userId = user.id
-        console.log(obj)
-        res.render('../views/dashboard',{user, obj})
+    }
+    obj = Object.fromEntries(myMap)
+    userId = user.id
+    console.log(obj)
+    res.render('../views/dashboard',{user, obj})
 
 ```
 
