@@ -52,7 +52,7 @@ The user-id is automatically assigned and incremented for each entry.
 We used chart.js bar chart to plot out the number of players playing a specific position on the NFL Chicago Bears football team.
 The charts intention is to show the user how many position players are on a given team as stat line they can look at as a fan of that specific team.
 
-### Code Snippets of RESTFul API Connection
+### Code Snippet of RESTFul API Connection
 
 ```javascript
     axios.get("https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/3/roster").then(function(response){
@@ -75,5 +75,25 @@ The charts intention is to show the user how many position players are on a give
         console.log(obj)
         res.render('../views/dashboard',{user, obj})
 
+```
+
+
+### Code Snippet of Docker config
+```javascript
+FROM node:12
+
+WORKDIR /assignment-2---final-project-repository-group-14
+
+COPY package*.json ./
+
+RUN npm install 
+
+COPY . .
+
+ENV PORT 5000
+
+EXPOSE 5000
+
+CMD ["npm","start"]
 ```
 ###https://uic-cs484.github.io/assignment-1---team-project-proposal-group-14/
