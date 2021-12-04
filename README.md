@@ -20,7 +20,7 @@ We will create a branch for every major change we do. Such as when we are creati
 - SQLite
 - Passport.js
 - Chart.js
-- React
+- Handlebars.js
 
 # How to run application
 ```
