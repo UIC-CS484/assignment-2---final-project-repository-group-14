@@ -32,6 +32,9 @@ Go to http://localhost:5000/
 ```
 $ npm test
 ```
+# AWS Link
+http://ec2-54-89-157-35.compute-1.amazonaws.com:5000/
+
 ### Test Implemented
 1. Test that checks to see if all requiered fields for database table were inputted.
 2. Test to check if the password is a "strong password" meaning there is at least one number, upper case and lower case letter.
