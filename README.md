@@ -51,7 +51,7 @@ The charts intention is to show the user how many position players are on a give
 
 ### Code Snippets of RESTFul API Connection
 
-```
+```javascript
     axios.get("https://site.api.espn.com/apis/site/v2/sports/football/nfl/teams/3/roster").then(function(response){
         var object = response.data.athletes;
         var players = object[0].items;
