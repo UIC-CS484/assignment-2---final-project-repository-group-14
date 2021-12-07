@@ -43,7 +43,6 @@ module.exports = function(passport) {
         done(null,user)// you can access with req.user
         
     })
-    
 
 }
     
