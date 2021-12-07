@@ -7,7 +7,7 @@ var object = {
     password : "123"
 }
 
-// check is all fields are filled
+// check if all fields are filled
 test('Valid User', () => {
     expect(validation.validateUser(object)).toBe(true);
 });
